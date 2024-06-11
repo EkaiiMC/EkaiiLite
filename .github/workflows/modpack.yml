@@ -1,0 +1,67 @@
+name: Build modpack
+on:
+  push:
+    branches:
+      - main
+jobs:
+  mrpack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Git Repository
+        uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.22.x
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Configure Git User Details
+        run: |
+          git config --global user.name "actions@github.com"
+          git config --global user.email "GitHub Actions"
+      - name: Read YAML
+        uses: pietrobolcato/action-read-yaml@1.1.0
+        id: read_yaml
+        with:
+          config: pack/pack.toml
+      - name: Set Version
+        run: echo "version=${{ steps.read_yaml.outputs.version }}" >> $GITHUB_ENV
+      - name: Install packwiz
+        run: go install github.com/packwiz/packwiz@latest
+      - name: Generate .mrpack
+        run: |
+          cd pack/
+          packwiz modrinth export
+      - name: Generate curseforge zip
+        run: |
+          cd pack/
+          packwiz curseforge export
+      - name: Upload .mrpack
+        uses: actions/upload-artifact@v2
+        with:
+          name: EkaiiLite-v${{ env.version }}.mrpack
+          path: pack/*.mrpack
+      - name: Upload curseforge zip
+        uses: actions/upload-artifact@v2
+        with:
+          name: EkaiiLite-v${{ env.version }}.zip
+          path: pack/*.zip
+      - name: Publish (latest)
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: latest
+          title: "EkaiiLite v${{ env.version }}"
+          prerelease: false
+          files: |
+            pack/*.mrpack
+            pack/*.zip
+      - name: Publish (tag)
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: v${{ env.version }}
+          title: "EkaiiLite v${{ env.version }}"
+          prerelease: false
+          files: |
+            pack/*.mrpack
+            pack/*.zip

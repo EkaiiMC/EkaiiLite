@@ -1,0 +1,8 @@
+key_modifiers_key.socialInteractions:1,0,0
+key_modifiers_key.smoothCamera:1,0,0
+key_modifiers_key.saveToolbarActivator:1,0,0
+key_modifiers_key.advancements:0,1,0
+key_modifiers_key.amecs.toggle_auto_jump:1,0,0
+key_modifiers_key.gammautils.gammaToggle:1,0,0
+key_modifiers_key.gammautils.nightVisionToggle:1,0,0
+key_modifiers_gui.xaero_enlarge_map:1,0,0
