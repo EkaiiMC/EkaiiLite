@@ -24,7 +24,7 @@ jobs:
         with:
           config: pack/pack.toml
       - name: Set Version
-        run: echo "version=${{ steps.read_yaml.outputs.version }}" >> $GITHUB_ENV
+        run: echo "version=${{ steps.read_yaml.outputs['version'] }}" >> $GITHUB_ENV
       - name: Install packwiz
         run: go install github.com/packwiz/packwiz@latest
       - name: Generate .mrpack
