@@ -988,6 +988,26 @@ file = "resourcepacks/aide moi la maintenaaant.zip"
 hash = "5cc43f6eda17bc068c4d0e8657e3cb1f4e9adbc858c0d09dda139ca9f6034670"
 
 [[files]]
+file = "resourcepacks/ambientsounds5-remastered.pw.toml"
+hash = "c77fd4ab3df6c8c96a6f042202da8ed26072d41367df7a55dae32bb092fe23a7"
+metafile = true
+
+[[files]]
+file = "resourcepacks/bettervanillabuilding.pw.toml"
+hash = "c7deb68ef2f5b19f1f9bcddcc2599286966871d00acfec4b2f849d71c6b332d0"
+metafile = true
+
+[[files]]
+file = "resourcepacks/fresh-animations.pw.toml"
+hash = "256b67c869770482657d4dd31124bf705c780c5c798206af522bcd5392c7ded9"
+metafile = true
+
+[[files]]
+file = "resourcepacks/icons.pw.toml"
+hash = "eeb0a666627b9a76a107b7d6b14e41821a4fa61422eb959b79a8e786801b8fe9"
+metafile = true
+
+[[files]]
 file = "resourcepacks/je veux des items moi.zip"
 hash = "0d57b06a63c6aee2df3c68f954d8e84be863dc5ecbbd3590d9fd320dba364fe1"
 
